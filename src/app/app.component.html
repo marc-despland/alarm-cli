@@ -1,0 +1,6 @@
+<div>
+  <signin  [hidden]="session!==''" [(session)]="session"></signin>
+  <div id="wrapper" [hidden]="session===''">
+    <router-outlet></router-outlet>
+  </div>
+</div>
