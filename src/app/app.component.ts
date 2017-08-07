@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
+import { AlarmmgtService} from './alarmmgt/alarmmgt.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  session= '';
-  constructor() {
-		this.session="";
+  constructor(private alarmmgt: AlarmmgtService) {
 	}
+
 }
 

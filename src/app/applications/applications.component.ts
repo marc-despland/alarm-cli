@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { AlarmmgtService} from '../alarmmgt/alarmmgt.service';
 
 @Component({
   selector: 'app-applications',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApplicationsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private alarmmgt: AlarmmgtService) { }
 
   ngOnInit() {
   }
 
+  
 }

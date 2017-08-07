@@ -28,10 +28,10 @@ export class SigninComponent implements OnInit {
   	event.preventDefault();
 	this.api.signin(this.signinForm.value.login, this.signinForm.value.password).subscribe(data => {
   		console.log("Received : "+ data);
-  		console.log("Sessionid : "+ data.sessionid);
+  		console.log("Session : "+ data.session);
   		this.error=false;
   		this.signinForm.controls['password'].setValue("");
-  		this.session=data.sessionid;
+  		this.session=data.session;
   		this.sessionChange.emit(this.session);
   		return true;
   	}, error => {

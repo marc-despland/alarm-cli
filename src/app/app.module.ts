@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { Router } from '@angular/router';
 
 import { AppRoutingModule }        from './app-routing.module';
+import { AlarmmgtService} from './alarmmgt/alarmmgt.service';
 
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
@@ -23,7 +24,7 @@ import { ApplicationsComponent } from './applications/applications.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AlarmmgtService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
