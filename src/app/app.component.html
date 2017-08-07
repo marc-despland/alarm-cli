@@ -1,5 +1,5 @@
 <div>
-   <signin  [hidden]="alarmmgt.session!==''" [(session)]="alarmmgt.session"></signin>
+   <signin  [hidden]="alarmmgt.session!==''"></signin>
   <div id="wrapper" [hidden]="alarmmgt.session===''">
     <router-outlet></router-outlet>
   </div>
