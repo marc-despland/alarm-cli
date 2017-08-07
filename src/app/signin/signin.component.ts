@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AlarmmgtService } from '../alarmmgt/alarmmgt.service';
 import {Observable} from "rxjs/Rx";
+import { Router, NavigationEnd } from '@angular/router';
+
 
 @Component({
   selector: 'signin',
@@ -15,7 +17,7 @@ export class SigninComponent implements OnInit {
 		password: ["", Validators.required]
   	});
 
-  constructor(public fb: FormBuilder, private api: AlarmmgtService) { }
+  constructor(public fb: FormBuilder, private api: AlarmmgtService, private router:Router) { }
 
   ngOnInit() {
   }
@@ -27,6 +29,7 @@ export class SigninComponent implements OnInit {
       console.log("Session : "+ session);
       this.error=false;
       this.signinForm.controls['password'].setValue("");
+      this.router.navigate(['/applications']);
       return true;
     }, error => {
       this.error=true;
