@@ -1,4 +1,7 @@
-<p>
-  applications works!<br>
-  Session : -{{alarmmgt.session}}-<br>
-</p>
+<div>
+	<ul class="items">  
+		<li *ngFor=" let app of data" [class.selected]="isSelected(app)" (click)="onSelect(app)">
+			{{ app.name }}
+		</li>
+	</ul>  
+</div>

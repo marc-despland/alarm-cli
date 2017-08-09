@@ -1,10 +1,14 @@
-.items {
+.label {
+	font-weight: bold;
+}
+
+.action {
   margin: 0 0 2em 2em;
   list-style-type: none;
   padding: 0;
   width: 24em;
 }
-.items li {
+.action a {
   cursor: pointer;
   position: relative;
   left: 0;
@@ -15,19 +19,19 @@
   border-radius: 4px;
   padding-left: 10px;
 }
-.items li:hover {
+.action a:hover {
   color: #607D8B;
   background-color: #DDD;
   left: .1em;
 }
-.items li.selected {
+.action a.selected {
   background-color: #CFD8DC;
   color: white;
 }
-.items li.selected:hover {
+.action a.selected:hover {
   background-color: #BBD8DC;
 }
-.items .text {
+.action .text {
   position: relative;
   top: -3px;
   left: 1em;

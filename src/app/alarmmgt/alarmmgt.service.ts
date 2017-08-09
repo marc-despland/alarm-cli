@@ -34,13 +34,16 @@ export class AlarmmgtService {
     return promise;
   }
 
-  listapplication() {
+  listApplication() {
   	let promise = new Promise((resolve, reject) => {
-    	this.http.get(environment.baseurl+'/application', {
-    		headers: new HttpHeaders().set('Content-Type', 'application/json').set('session', this.session),
+      let headers=new HttpHeaders();
+      headers=headers.append('Content-Type', 'application/json');
+      headers=headers.append('session', this.session);
+    	this.http.get(environment.baseurl+'/applications', {
+    		headers: headers
   		}).subscribe( data => {
     		console.log(JSON.stringify(data));
-    		resolve(this.session);
+    		resolve(data);
     	}, error => {
     		reject(error);
     	});
@@ -49,4 +52,60 @@ export class AlarmmgtService {
   }
 
 
+  statusApplication(id: string) {
+    let promise = new Promise((resolve, reject) => {
+      let headers=new HttpHeaders();
+      headers=headers.append('Content-Type', 'application/json');
+      headers=headers.append('session', this.session);
+      this.http.get(environment.baseurl+'/applications/'+id+"/alarm/status", {
+        headers: headers
+      }).subscribe( data => {
+        console.log(JSON.stringify(data));
+        resolve(data);
+      }, error => {
+        reject(error);
+      });
+    });
+    return promise;
+  }
+
+  countIntrusions(appid: string) {
+    let promise = new Promise((resolve, reject) => {
+      let headers=new HttpHeaders();
+      headers=headers.append('Content-Type', 'application/json');
+      headers=headers.append('session', this.session);
+      this.http.get(environment.baseurl+'/applications/'+appid+"/intrusions", {
+        headers: headers
+      }).subscribe( data => {
+        let list=<Array<string>>data;
+        console.log(JSON.stringify(list));
+        resolve(list.length);
+      }, error => {
+        reject(error);
+      });
+    });
+    return promise;
+  }
+
+  listIntrusions(appid: string) {
+    let promise = new Promise((resolve, reject) => {
+      let headers=new HttpHeaders();
+      headers=headers.append('Content-Type', 'application/json');
+      headers=headers.append('session', this.session);
+      this.http.get(environment.baseurl+'/applications/'+appid+"/intrusions", {
+        headers: headers
+      }).subscribe( data => {
+        let list=<Array<string>>data;
+        console.log(JSON.stringify(list));
+        resolve(list);
+      }, error => {
+        reject(error);
+      });
+    });
+    return promise;
+  }
+
+  liveAlarmImageUrl(id:string) {
+    return(environment.baseurl+'/applications/'+id+"/alarm/liveimage?session="+this.session+"&width=300");
+  }
 }

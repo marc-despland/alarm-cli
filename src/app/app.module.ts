@@ -7,16 +7,24 @@ import { Router } from '@angular/router';
 
 import { AppRoutingModule }        from './app-routing.module';
 import { AlarmmgtService} from './alarmmgt/alarmmgt.service';
+import { StatusService} from './status.service';
+
 
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
 import { ApplicationsComponent } from './applications/applications.component';
+import { ApplicationComponent } from './application/application.component';
+import { IntrusionsComponent } from './intrusions/intrusions.component';
+import { IntrusionComponent } from './intrusion/intrusion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
-    ApplicationsComponent
+    ApplicationsComponent,
+    ApplicationComponent,
+    IntrusionsComponent,
+    IntrusionComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +33,10 @@ import { ApplicationsComponent } from './applications/applications.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [AlarmmgtService],
+  providers: [
+    AlarmmgtService,
+    StatusService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
