@@ -1,0 +1,8 @@
+<div>
+	<div class="container">
+		<div class="row">
+			<img *ngIf="fullsize" (click)="switchSize()" [src]="image.url"/>
+			<img *ngIf="!fullsize" (click)="switchSize()" [src]="image.thumbnail"/>
+		</div>
+	</div>
+</div>

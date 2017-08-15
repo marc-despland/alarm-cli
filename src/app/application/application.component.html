@@ -1,39 +1,34 @@
 <div class="container">
 	<div class="row">
 		<span class="col-sm-4 label">Name</span>
-		<span class="col-sm-8 value">{{status.app.name}}</span>
+		<span class="col-sm-8 value">{{globals.app.name}}</span>
 	</div>
 	<div class="row">
 		<span class="col-sm-4 label">Program</span>
-		<span class="col-sm-8 value">{{app.program}}</span>
+		<span class="col-sm-8 value">{{globals.app.status.program}}</span>
 	</div>
 	<div class="row">
 		<span class="col-sm-4 label">Version</span>
-		<span class="col-sm-8 value">{{app.version}}</span>
+		<span class="col-sm-8 value">{{globals.app.status.version}}</span>
 	</div>
 	<div class="row">
 		<span class="col-sm-4 label">Descriprion</span>
-		<span class="col-sm-8 value">{{app.description}}</span>
+		<span class="col-sm-8 value">{{globals.app.status.description}}</span>
 	</div>
 	<div class="row">
 		<span class="col-sm-4 label">Intrusion in progress</span>
-		<span class="col-sm-8 value">{{app.intrusion}}</span>
+		<span class="col-sm-8 value">{{globals.app.status.intrusion}}</span>
 	</div>
 	<div class="row">
 		<span class="col-sm-4 label">Intrusions total</span>
-		<span class="col-sm-4 value">{{countInt}}</span>
-		<button class="col-sm-2" (click)="showIntrusionsHistory()" >show history</button>
-		<span class="col-sm-2 ">&nbsp;</span>
+		<span class="col-sm-8 value">{{globals.app.countInt}}</span>
 	</div>
 	<div class="row">
 		<span class="col-sm-4 label">Alarm paused (light on)</span>
-		<span class="col-sm-8 value">{{app.pause}}</span>
+		<span class="col-sm-8 value">{{globals.app.status.pause}}</span>
 	</div>
-	<div class="row" *ngFor=" let sensor of app.sensors">
+	<div class="row" *ngFor=" let sensor of globals.app.status.sensors">
 		<span class="col-sm-4 label">{{sensor.name}}</span>
 		<span class="col-sm-8 value">{{sensor.value}}</span>
-	</div>
-	<div class="row">
-		<img [src]="api.liveAlarmImageUrl(status.app.id)"/>
 	</div>
 </div>

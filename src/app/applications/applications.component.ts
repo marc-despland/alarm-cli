@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AlarmmgtService} from '../alarmmgt/alarmmgt.service';
-import { StatusService} from '../status.service';
+import { GlobalsService} from '../globals.service';
 import { Application} from '../alarmmgt/application';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgForOf } from '@angular/common';
 
 
@@ -17,7 +17,7 @@ export class ApplicationsComponent implements OnInit {
 	id: number;
 	selectedId: string;
 
-	constructor(private router:Router, private api: AlarmmgtService, private status: StatusService) {
+	constructor(private router:Router, private api: AlarmmgtService, private globals: GlobalsService) {
 		this.data=new Array<Application>();
 		this.id=Math.random();
 		this.selectedId="";
@@ -36,7 +36,7 @@ export class ApplicationsComponent implements OnInit {
 				console.log("		ListApplication DATA :"+data);
 				this.data=<Array<Application>>data;
 				if (this.data.length===1) {
-					this.status.app=this.data[0];
+					this.globals.app=this.data[0];
 					this.router.navigate(['/application', this.data[0].id]);
 				}
 			}, error => {
@@ -52,7 +52,7 @@ export class ApplicationsComponent implements OnInit {
 	}
 
   	onSelect(app: Application) {
-  		this.status.app=app;
+  		this.globals.app=app;
     	this.router.navigate(['/application', app.id]);
   	}
 

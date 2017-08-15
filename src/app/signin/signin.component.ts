@@ -29,8 +29,6 @@ export class SigninComponent implements OnInit {
       console.log("Session : "+ session);
       this.error=false;
       this.signinForm.controls['password'].setValue("");
-      console.log("++++++++ Valid credentials, navigate to /applications");
-      this.router.navigate(['/applications']);
       return true;
     }, error => {
       this.error=true;

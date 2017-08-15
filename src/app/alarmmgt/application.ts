@@ -3,6 +3,21 @@ import { Sensor} from './sensor';
 export class Application {
 	id: string;
 	name:string;
+	countInt: number;
+	status: ApplicationStatus;
+	intrusions: Array<string>;
+	
+	constructor() {
+		this.id="";
+		this.name="";
+		this.countInt=0;
+		this.status=new ApplicationStatus();
+		this.intrusions=new Array<string>();
+	}
+}
+
+
+export class ApplicationStatus {
 	program: string;
 	version: string;
 	description: string;
@@ -11,8 +26,6 @@ export class Application {
 	sensors: Array<Sensor>;
 	
 	constructor() {
-		this.id="";
-		this.name="";
 		this.program="";
 		this.version="";
 		this.description="";

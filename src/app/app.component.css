@@ -1,0 +1,65 @@
+#wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  background-color: #222;
+}
+
+.mbaomenu {
+	min-height: 15% !important;
+	background-color:#FF0000;
+}
+
+nav {
+	min-height: 0px;
+	height: auto !important;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	border: 0px;
+	width: 100%;
+	
+}
+
+.navbar {
+	border-radius: 0;
+	width: 100%;
+}
+
+.navbar-nav li a {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top:5px;
+	padding-bottom: 5px;
+	margin-left: 5px;
+	margin-bottom: 10px;
+	margin-right: 5px;
+	margin-top: 10px;
+}
+
+.active {
+	color: #f16e01;
+    border-bottom-style: solid;
+    border-color: #f16e00;
+
+}
+
+.navbar-inverse .navbar-nav > li > a.active {
+		color: #f16e00;
+}
+
+
+
+#logobandeau {
+	background-color:#222;
+}
+
+#logo {
+	width: 50px;
+	height: 50px;
+	margin-top: 5px;
+	margin-left: 5px;
+
+}

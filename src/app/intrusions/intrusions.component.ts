@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlarmmgtService} from '../alarmmgt/alarmmgt.service';
-import { StatusService} from '../status.service';
+import { GlobalsService} from '../globals.service';
 import { Application} from '../alarmmgt/application';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -16,7 +16,7 @@ export class  IntrusionsComponent implements OnInit {
 	selectedId: string;
 	appid: string;
 
-	constructor(private route: ActivatedRoute,private router:Router, private api: AlarmmgtService, private status: StatusService) {
+	constructor(private route: ActivatedRoute,private router:Router, private api: AlarmmgtService, private globals: GlobalsService) {
 		this.data=new Array<string>();
 		this.id=Math.random();
 		this.selectedId="";
@@ -28,7 +28,7 @@ export class  IntrusionsComponent implements OnInit {
 
 	initialize(id: string) {
 		let promise = new Promise((resolve, reject) => {
-			if (this.status.app.id!==id) {
+			if (this.globals.app.id!==id) {
 				this.router.navigate(['/applications']);
 				reject();
 			} else {

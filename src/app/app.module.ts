@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 
 import { AppRoutingModule }        from './app-routing.module';
 import { AlarmmgtService} from './alarmmgt/alarmmgt.service';
-import { StatusService} from './status.service';
+import { GlobalsService} from './globals.service';
 
 
 import { AppComponent } from './app.component';
@@ -16,6 +16,8 @@ import { ApplicationsComponent } from './applications/applications.component';
 import { ApplicationComponent } from './application/application.component';
 import { IntrusionsComponent } from './intrusions/intrusions.component';
 import { IntrusionComponent } from './intrusion/intrusion.component';
+import { ImageComponent } from './image/image.component';
+//import { CollapseModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { IntrusionComponent } from './intrusion/intrusion.component';
     ApplicationsComponent,
     ApplicationComponent,
     IntrusionsComponent,
-    IntrusionComponent
+    IntrusionComponent,
+    ImageComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ import { IntrusionComponent } from './intrusion/intrusion.component';
   ],
   providers: [
     AlarmmgtService,
-    StatusService
+    GlobalsService
   ],
   bootstrap: [AppComponent]
 })

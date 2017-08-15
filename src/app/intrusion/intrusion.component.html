@@ -1,3 +1,16 @@
-<p>
-  intrusion works!
-</p>
+<div>
+	<div class="container">
+		<div class="row">
+			<span class="col-sm-4 label">Intrusion date</span>
+			<span class="col-sm-8 value">{{globals.intrusion.name}}</span>
+		</div>
+		<div class="row">
+			<button class="btn btn-danger btn-lg btn-block" (click)="delete()">Delete this intrusion</button>
+		</div>
+
+
+	<div *ngFor=" let image of globals.intrusion.images" [class.selected]="isSelected(image)" (click)="onSelect(image)" class="thumbnail">
+		<img [src]="api.liveIntrusionThumbnailUrl(globals.app.id, globals.intrusion.id, image.imageid)"/>
+	</div>
+	</div>
+</div>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Application} from '../alarmmgt/application';
 import { AlarmmgtService} from '../alarmmgt/alarmmgt.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { StatusService} from '../status.service';
+import { GlobalsService} from '../globals.service';
 
 
 @Component({
@@ -17,37 +17,17 @@ export class ApplicationComponent implements OnInit {
 	imgsrc: string;
 	countInt: number;
 
-	constructor(private route: ActivatedRoute, private router: Router,private api: AlarmmgtService, private status: StatusService) { 
+	constructor(private route: ActivatedRoute, private router: Router,private api: AlarmmgtService, private globals: GlobalsService) { 
 		this.id=Math.random();
 		this.countInt=0;
 	}
 
-	initialize(id: string) {
-		let promise = new Promise((resolve, reject) => {
-			if (this.status.app.id!==id) {
-				this.router.navigate(['/applications']);
-				reject();
-			} else {
-				this.appid=id;
-				this.api.statusApplication(id).then((app: Application) => {
-					console.log("		Application DATA :"+JSON.stringify(app));
-					resolve(app);
-				}, (error) => reject());
-			}
-		});
-		return promise;
-	}
 	ngOnInit() {
 		console.log("ApplicationComponent Application ngOnInit "+this.id);
-		if (this.api.session==='') {
-			//we are not login, redirect to signin
-			console.log("	Not authenticate, navigate to signin "+this.id);
-			this.router.navigate(['/signin']);
-		} else {
-			console.log("	Application  "+this.id);
-			this.route.paramMap.switchMap((params: ParamMap) => this.initialize(params.get('id'))).subscribe((app: Application) => this.app = app);
-			this.route.paramMap.switchMap((params: ParamMap) => this.api.countIntrusions(params.get('id'))).subscribe((value: number) => this.countInt = value);
-		}
+		console.log("	Application  "+this.id);
+		this.route.paramMap.switchMap((params: ParamMap) => this.globals.checkApp(params.get('appid'))).subscribe(() => {
+			console.log("Application loaded");
+		});
 	}
 
 	showIntrusionsHistory() {
